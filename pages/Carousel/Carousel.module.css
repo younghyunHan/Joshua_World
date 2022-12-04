@@ -1,0 +1,20 @@
+/* #Carousel {
+  width: 550px;
+  margin: 30px 0px 0px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.myImg {
+  width: 250px;
+  height: 150px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.myImgTitle {
+  display: inline-block;
+  width: 100px;
+  font-size: 12px;
+} */
