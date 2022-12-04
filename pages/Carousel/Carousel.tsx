@@ -1,9 +1,9 @@
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import CarouselStyles from './Carousel.module.css';
+import CarouselStyles from "./Carousel.module.css";
 
 function Carousel({ allData }) {
   // const settings = {
