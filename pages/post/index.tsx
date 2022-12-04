@@ -13,7 +13,7 @@ export default function Post() {
   // const access_token = localStorage.getItem('token');
 
   const Editor = dynamic(
-    () => import("../../components/Editor/EditorCompoent"),
+    () => import("../../components/Editor/EditorComponent"),
     {
       ssr: false,
     }
