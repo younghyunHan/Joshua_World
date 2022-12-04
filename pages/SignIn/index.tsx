@@ -194,7 +194,7 @@ export default function Index() {
             >
               Sign In
             </button>
-            <Link href="/SignUp">
+            <Link href="/signUp">
               <button type="button" id={SignInStyles.goToSignUp}>
                 Sign Up
               </button>

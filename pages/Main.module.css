@@ -1,0 +1,420 @@
+/* #mainWrap {
+  width: 800px;
+} */
+
+#main {
+  display: flex;
+  gap: 40px;
+  padding: 50px 230px;
+}
+
+#informationTech {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#mainTitleBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#mainTitle {
+  padding-left: 15px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#indicators {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #3b88c3;
+}
+
+#mainSubTitleBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#mainSubTitleLeftLine {
+  width: 50px;
+  height: 1px;
+  border: none;
+  background-color: #dbdbdb;
+}
+
+#mainSubTitle {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#mainSubTitleRightLine {
+  width: 500px;
+  height: 1px;
+  border: none;
+  background-color: #dbdbdb;
+}
+
+#mainPosts {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.mainPostsImg {
+  width: 300px;
+}
+
+.mainContentBox {
+  width: 405px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.mainContentTitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mainContentHashTag {
+  color: #3b88c3;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.mainContent {
+  line-height: 25px;
+  font-size: 13px;
+}
+
+.mainContentBottom {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.mainContentTime {
+  color: #2d75ad;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.mainContentViews,
+.mainContentLikes {
+  color: #9b9999;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.verticalBar {
+  width: 1px;
+  height: 8px;
+  background-color: #9b9999;
+}
+
+#mainAside {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.asidePostBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+#asidePostBoxBottomLine {
+  width: 230px;
+  height: 1px;
+  border: none;
+  background-color: #dbdbdb;
+}
+
+.asidePostBoxTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#likeImg,
+#viewsImg,
+#commentImg {
+  width: 30px;
+}
+
+.asidePostBoxTitle {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.asidePostBoxBottom {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.aisdePostTime,
+.asidePostViews {
+  color: #706c6c;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.aisdePostLikes {
+  color: #2d75ad;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+/* 
+#sideBar {
+  float: left;
+  top: 0px;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  border: 1px solid #b8bfc1;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#sideBarOne {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #b8bfc1;
+  font-size: 12px;
+  color: #a4b9c6;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+#myImg {
+  width: 160px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+#sideBarOneContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#userName {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#userName,
+#editButton {
+  cursor: pointer;
+}
+
+#userName:after {
+  display: block;
+  width: 60px;
+  content: '';
+  border-bottom: 1px solid #b8bfc1;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+#userName:hover:after {
+  transform: scaleX(1);
+}
+
+#editButtonWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#editButton {
+  color: #bdccd6;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid white;
+}
+
+#navData {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  border: 1.5px solid #e9e9e9;
+  border-radius: 10px;
+}
+
+#navDataTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#category {
+  font-size: 15px;
+  cursor: pointer;
+  color: #44a0dd;
+}
+
+#category:after {
+  display: block;
+  width: 55px;
+  padding: 1px;
+  content: '';
+  border-bottom: 1px solid #44a0dd;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+#category:hover:after {
+  transform: scaleX(1);
+}
+
+.navDataContent {
+  font-size: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #6baad3;
+  transition: all 0.2s ease-in-out;
+}
+
+.navDataContent:hover {
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.menuArrow {
+  width: 8px;
+  margin-right: 10px;
+  filter: invert(72%) sepia(15%) saturate(1209%) hue-rotate(164deg)
+    brightness(87%) contrast(90%);
+}
+
+#searchBox {
+  width: 100%;
+  display: flex;
+  position: relative;
+  border: 1px solid #b8bfc1;
+  border-radius: 5px;
+}
+
+#search {
+  width: 140px;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+#search:focus {
+  outline: none;
+}
+
+#searchIcon {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  bottom: 7px;
+  right: 10px;
+}
+
+#listWrap {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#list {
+  width: 100%;
+  height: 358px;
+  margin-top: 5px;
+  border: 1px solid #b8bfc1;
+  border-radius: 10px;
+  padding: 25px 15px;
+}
+
+#listTopWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#listTopOne {
+  display: flex;
+  justify-content: space-between;
+  color: #8a837e;
+  font-weight: bold;
+}
+
+#listTopOneLeft,
+#listTopOneRight {
+  display: flex;
+  gap: 15px;
+}
+
+#listTopOneRight:hover {
+  cursor: pointer;
+}
+
+#listTopTwo {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #cbc8c6;
+  font-weight: bold;
+  font-size: 13px;
+  border-bottom: 1px solid #b8bfc1;
+}
+
+.listTopData {
+  padding: 12px 0px;
+  border-bottom: 1px solid #e1e0e0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#mainText {
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid #b8bfc1;
+  border-radius: 10px;
+  padding: 25px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainTextData {
+  width: 130px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.mainTextDataImg {
+  width: 130px;
+  height: 130px;
+} */
