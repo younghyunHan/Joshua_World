@@ -1,26 +1,26 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef } from "react";
 
-import React from 'react';
+import React from "react";
 
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-import Nav from '../../components/Nav/Nav';
+import Nav from "../../components/Nav/Nav";
 
-import SignUpStyles from './SignUp.module.css';
+import SignUpStyles from "./signUp.module.css";
 
 export default function Index() {
   //이름, 이메일, 비밀번호, 비밀번호 확인
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [passwordConfirm, setPasswordConfirm] = useState<string>('');
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
 
   //오류메시지 상태저장
-  const [nameMessage, setNameMessage] = useState<string>('');
-  const [emailMessage, setEmailMessage] = useState<string>('');
-  const [passwordMessage, setPasswordMessage] = useState<string>('');
+  const [nameMessage, setNameMessage] = useState<string>("");
+  const [emailMessage, setEmailMessage] = useState<string>("");
+  const [passwordMessage, setPasswordMessage] = useState<string>("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] =
-    useState<string>('');
+    useState<string>("");
 
   // 유효성 검사
   const [isName, setIsName] = useState<boolean>(false);
@@ -38,10 +38,10 @@ export default function Index() {
 
   const signUp = (event: any) => {
     event.preventDefault();
-    fetch('http://localhost:3000/signUp', {
-      method: 'POST',
+    fetch("http://localhost:3000/signUp", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         user_id: email,
@@ -49,11 +49,11 @@ export default function Index() {
         user_name: name,
       }),
     })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === 'SUCCESS') {
-          alert('회원가입이 완료되었습니다.');
-          router.push('/SignIn');
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.message === "SUCCESS") {
+          alert("회원가입이 완료되었습니다.");
+          router.push("/SignIn");
         }
       });
   };
@@ -62,10 +62,10 @@ export default function Index() {
   const onChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
     if (e.target.value.length < 2 || e.target.value.length > 5) {
-      setNameMessage('2글자 이상 5글자 미만으로 입력해주세요.');
+      setNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
       setIsName(false);
     } else {
-      setNameMessage('올바른 이름 형식입니다 :)');
+      setNameMessage("올바른 이름 형식입니다 :)");
       setIsName(true);
     }
   }, []);
@@ -79,14 +79,14 @@ export default function Index() {
       setEmail(emailCurrent);
 
       if (!emailRegex.test(emailCurrent)) {
-        setEmailMessage('이메일 형식이 틀렸어요! 다시 확인해주세요 ㅜ ㅜ');
+        setEmailMessage("이메일 형식이 틀렸어요! 다시 확인해주세요 ㅜ ㅜ");
         setIsEmail(false);
       } else {
-        setEmailMessage('올바른 이메일 형식이에요 : )');
+        setEmailMessage("올바른 이메일 형식이에요 : )");
         setIsEmail(true);
       }
     },
-    [],
+    []
   );
 
   // 비밀번호
@@ -99,15 +99,15 @@ export default function Index() {
 
       if (!passwordRegex.test(passwordCurrent)) {
         setPasswordMessage(
-          '숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!',
+          "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!"
         );
         setIsPassword(false);
       } else {
-        setPasswordMessage('안전한 비밀번호에요 : )');
+        setPasswordMessage("안전한 비밀번호에요 : )");
         setIsPassword(true);
       }
     },
-    [],
+    []
   );
 
   // 비밀번호 확인
@@ -117,14 +117,14 @@ export default function Index() {
       setPasswordConfirm(passwordConfirmCurrent);
 
       if (password === passwordConfirmCurrent) {
-        setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )');
+        setPasswordConfirmMessage("비밀번호를 똑같이 입력했어요 : )");
         setIsPasswordConfirm(true);
       } else {
-        setPasswordConfirmMessage('비밀번호가 틀려요. 다시 확인해주세요 ㅜ ㅜ');
+        setPasswordConfirmMessage("비밀번호가 틀려요. 다시 확인해주세요 ㅜ ㅜ");
         setIsPasswordConfirm(false);
       }
     },
-    [password],
+    [password]
   );
 
   return (
@@ -214,7 +214,7 @@ export default function Index() {
             className={`${SignUpStyles.signUpBtn} ${
               isName && isEmail && isPassword && isPasswordConfirm
                 ? `${SignUpStyles.signUpBtnLive}`
-                : ''
+                : ""
             }`}
             onClick={signUp}
             disabled={!(isName && isEmail && isPassword && isPasswordConfirm)}

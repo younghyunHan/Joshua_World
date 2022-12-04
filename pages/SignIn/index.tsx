@@ -1,25 +1,25 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from "react";
 
-import React from 'react';
+import React from "react";
 
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-import Nav from '../../components/Nav/Nav';
+import Nav from "../../components/Nav/Nav";
 
-import SignInStyles from './SignIn.module.css';
+import SignInStyles from "./signIn.module.css";
 
 export default function Index() {
   //이름, 이메일, 비밀번호, 비밀번호 확인
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [passwordConfirm, setPasswordConfirm] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
 
   //오류메시지 상태저장
-  const [emailMessage, setEmailMessage] = useState<string>('');
-  const [passwordMessage, setPasswordMessage] = useState<string>('');
+  const [emailMessage, setEmailMessage] = useState<string>("");
+  const [passwordMessage, setPasswordMessage] = useState<string>("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] =
-    useState<string>('');
+    useState<string>("");
 
   // 유효성 검사
   const [isEmail, setIsEmail] = useState<boolean>(false);
@@ -36,24 +36,24 @@ export default function Index() {
 
   const signIn = (event: any) => {
     event.preventDefault();
-    fetch('http://localhost:3000/signIn', {
-      method: 'POST',
+    fetch("http://localhost:3000/signIn", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         user_id: email,
         user_pw: password,
       }),
     })
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         if (result.token) {
-          localStorage.setItem('token', result.token);
-          alert('환영합니다.');
-          router.push('/');
-        } else if (result.message === 'INVALID_USER') {
-          alert('ID와 PW를 확인해주세요.');
+          localStorage.setItem("token", result.token);
+          alert("환영합니다.");
+          router.push("/");
+        } else if (result.message === "INVALID_USER") {
+          alert("ID와 PW를 확인해주세요.");
         }
       });
   };
@@ -67,14 +67,14 @@ export default function Index() {
       setEmail(emailCurrent);
 
       if (!emailRegex.test(emailCurrent)) {
-        setEmailMessage('이메일 형식이 틀렸어요! 다시 확인해주세요 ㅜ ㅜ');
+        setEmailMessage("이메일 형식이 틀렸어요! 다시 확인해주세요 ㅜ ㅜ");
         setIsEmail(false);
       } else {
-        setEmailMessage('올바른 이메일 형식이에요 : )');
+        setEmailMessage("올바른 이메일 형식이에요 : )");
         setIsEmail(true);
       }
     },
-    [],
+    []
   );
 
   // 비밀번호
@@ -87,15 +87,15 @@ export default function Index() {
 
       if (!passwordRegex.test(passwordCurrent)) {
         setPasswordMessage(
-          '숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!',
+          "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!"
         );
         setIsPassword(false);
       } else {
-        setPasswordMessage('안전한 비밀번호에요 : )');
+        setPasswordMessage("안전한 비밀번호에요 : )");
         setIsPassword(true);
       }
     },
-    [],
+    []
   );
 
   // 비밀번호 확인
@@ -105,14 +105,14 @@ export default function Index() {
       setPasswordConfirm(passwordConfirmCurrent);
 
       if (password === passwordConfirmCurrent) {
-        setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )');
+        setPasswordConfirmMessage("비밀번호를 똑같이 입력했어요 : )");
         setIsPasswordConfirm(true);
       } else {
-        setPasswordConfirmMessage('비밀번호가 틀려요. 다시 확인해주세요 ㅜ ㅜ');
+        setPasswordConfirmMessage("비밀번호가 틀려요. 다시 확인해주세요 ㅜ ㅜ");
         setIsPasswordConfirm(false);
       }
     },
-    [password],
+    [password]
   );
 
   return (
@@ -187,7 +187,7 @@ export default function Index() {
               className={`${SignInStyles.signInBtn} ${
                 isEmail && isPassword && isPasswordConfirm
                   ? `${SignInStyles.signInBtnLive}`
-                  : ''
+                  : ""
               }`}
               onClick={signIn}
               disabled={!(isEmail && isPassword && isPasswordConfirm)}
