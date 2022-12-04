@@ -1,20 +1,23 @@
-import React, { useRef, useCallback } from 'react';
-import axios from 'axios';
-import dynamic from 'next/dynamic';
+import React, { useRef, useCallback } from "react";
+import axios from "axios";
+import dynamic from "next/dynamic";
 
 // components
-import Nav from '../../components/Nav/Nav';
-import HeaderTitle from '../../components/HeaderTitle/HeaderTitle';
+import Nav from "../../components/Nav/Nav";
+import HeaderTitle from "../../components/HeaderTitle/HeaderTitle";
 
 // CSS
-import PostStyles from './post.module.css';
+import PostStyles from "./post.module.css";
 
 export default function Post() {
   // const access_token = localStorage.getItem('token');
 
-  const Editor = dynamic(() => import('../../components/Editor/Editor'), {
-    ssr: false,
-  });
+  const Editor = dynamic(
+    () => import("../../components/Editor/EditorCompoent"),
+    {
+      ssr: false,
+    }
+  );
 
   const postTitleRef = useRef<HTMLInputElement>(null);
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
@@ -44,24 +47,24 @@ export default function Post() {
 
       const formData = new FormData();
 
-      formData.append('postThumnailImg', savedImgs[0]);
-      formData.append('postTitle', savedTitle);
-      formData.append('postThumbnailLink', savedThumbnailLink);
+      formData.append("postThumnailImg", savedImgs[0]);
+      formData.append("postTitle", savedTitle);
+      formData.append("postThumbnailLink", savedThumbnailLink);
 
       axios
-        .post('http://localhost:3000/userInfoUpdate', formData, {
+        .post("http://localhost:3000/userInfoUpdate", formData, {
           headers: {
             // Authorization: `${access_token}`,
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         })
         .then(function (response) {
-          if (response.data.message === 'SUCCESS') {
-            alert('게시글 저장되었습니다.');
+          if (response.data.message === "SUCCESS") {
+            alert("게시글 저장되었습니다.");
           }
         });
     },
-    [postTitleRef, postThumnailLinkRef, postThumbnailRef],
+    [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
 
   return (
