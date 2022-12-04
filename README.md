@@ -13,5 +13,5 @@
 ## 구현 사항
 
 ## 적용 기술
-
 TypeScript, Node.js(Express), Next.js, React, HTML5/CSS3, MySQL, Git/Github, Editor(ESLinst, Prettier), AWS(EC2), NginX
+
