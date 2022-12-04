@@ -28,16 +28,16 @@
   gap: 15px;
 }
 
-#signInTitle {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2a2a2a;
-}
-
 #signInFormName {
   margin-bottom: 40px;
   font-size: 60px;
   text-align: center;
+}
+
+#signInTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2a2a2a;
 }
 
 #userId,
