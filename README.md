@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## BLOG
 
 - 네이버 블로그를 모티브로 웹 사이트 제작
@@ -15,3 +16,6 @@
 ## 적용 기술
 
 TypeScript, Node.js(Express), Next.js, React, HTML5/CSS3, MySQL, Git/Github, Editor(ESLinst, Prettier), AWS(EC2), NginX
+=======
+# Joshua_World
+>>>>>>> 093e27d285c85ae2193d928e7fa5f803edbffe35
