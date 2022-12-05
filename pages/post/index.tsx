@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 // components
 import Nav from "../../components/Nav/Nav";
 import HeaderTitle from "../../components/HeaderTitle/HeaderTitle";
+import customAxios from "../api/customAxios";
 
 // CSS
 import PostStyles from "./post.module.css";
@@ -63,6 +64,8 @@ export default function Post() {
             alert("게시글 저장되었습니다.");
           }
         });
+
+      // customAxios.post('/userInfoUpdate', formData); // customAxios
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
