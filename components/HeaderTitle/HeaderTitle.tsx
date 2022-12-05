@@ -1,4 +1,4 @@
-import HeaderTitleStyles from './HeaderTitle.module.css';
+import HeaderTitleStyles from "./HeaderTitle.module.css";
 
 function HeaderTitle() {
   return (
@@ -7,7 +7,7 @@ function HeaderTitle() {
       <img
         id={HeaderTitleStyles.headerImg}
         alt="headerImg"
-        src={'/images/headerImg.png'}
+        src={"/images/headerImg.png"}
       />
     </article>
   );
