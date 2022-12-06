@@ -9,3 +9,21 @@ export const customAxios: AxiosInstance = axios.create({
     "Content-Type": "multipart/form-data",
   },
 });
+
+customAxios.interceptors.request.use(
+  (config) => {
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
+customAxios.interceptors.response.use(
+  (config) => {
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
