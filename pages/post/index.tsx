@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 // components
 import Nav from "../../components/Nav/Nav";
 import HeaderTitle from "../../components/HeaderTitle/HeaderTitle";
-import { customAxios } from "../api/customAxios";
+import { customAxios } from "../../lib/CustomAxios";
 
 // CSS
 import PostStyles from "./post.module.css";
