@@ -1,4 +1,9 @@
-import { useRef } from "react";
+import {
+  ReactComponentElement,
+  ReactElement,
+  ReactInstance,
+  useRef,
+} from "react";
 import { Editor } from "@toast-ui/react-editor";
 
 // TOAST UI Editor CSS
@@ -20,9 +25,13 @@ import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import tableMergedCell from "@toast-ui/editor-plugin-table-merged-cell";
 
 const EditorComponent = () => {
-  const editorRef = useRef(null);
+  const editorRef = useRef<any>(null);
 
   const editorInstance = editorRef?.current?.getInstance();
+  const contentHTML = editorInstance?.getHTML();
+  const contentMark = editorInstance?.getMarkdown();
+  console.log(contentHTML);
+  console.log(contentMark);
 
   return (
     <Editor
