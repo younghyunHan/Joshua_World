@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Editor } from "@toast-ui/react-editor";
 
 // TOAST UI Editor CSS
@@ -18,19 +19,26 @@ import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 // table-merged-cell
 import tableMergedCell from "@toast-ui/editor-plugin-table-merged-cell";
 
-const EditorComponent = () => (
-  <Editor
-    initialValue="hello react editor world!"
-    previewStyle="vertical"
-    height="500px"
-    usageStatistics={false}
-    plugins={[
-      colorSyntax,
-      tableMergedCell,
-      [codeSyntaxHighlight, { highlighter: Prism }],
-    ]}
-    // language="ko-KR"
-  />
-);
+const EditorComponent = () => {
+  const editorRef = useRef(null);
+
+  const editorInstance = editorRef?.current?.getInstance();
+
+  return (
+    <Editor
+      ref={editorRef}
+      initialValue="hello react editor world!"
+      previewStyle="vertical"
+      height="500px"
+      usageStatistics={false}
+      plugins={[
+        colorSyntax,
+        tableMergedCell,
+        [codeSyntaxHighlight, { highlighter: Prism }],
+      ]}
+      // language="ko-KR"
+    />
+  );
+};
 
 export default EditorComponent;

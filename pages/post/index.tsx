@@ -52,20 +52,20 @@ export default function Post() {
       formData.append("postTitle", savedTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
 
-      axios
-        .post("http://localhost:3000/userInfoUpdate", formData, {
-          headers: {
-            // Authorization: `${access_token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then(function (response) {
-          if (response.data.message === "SUCCESS") {
-            alert("게시글 저장되었습니다.");
-          }
-        });
+      // axios
+      //   .post("http://localhost:3000/userInfoUpdate", formData, {
+      //     headers: {
+      //       // Authorization: `${access_token}`,
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   })
+      //   .then(function (response) {
+      //     if (response.data.message === "SUCCESS") {
+      //       alert("게시글 저장되었습니다.");
+      //     }
+      //   });
 
-      customAxios.post("/userInfoUpdate", formData); // customAxios
+      // customAxios.post("/userInfoUpdate", formData); // customAxios
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
