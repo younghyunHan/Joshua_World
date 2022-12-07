@@ -26,7 +26,7 @@ export default function Post() {
 
   const savedTitle = postTitleRef?.current?.value;
 
-  console.log(savedTitle);
+  // console.log(savedTitle);
   // console.log(postTitleRef?.current?.value);
   // console.log(postThumnailLinkRef?.current?.value);
   // console.log(postThumbnailRef?.current?.files);
@@ -38,9 +38,9 @@ export default function Post() {
         return;
       }
 
-      // console.log(postTitleRef?.current?.value);
-      // console.log(postThumnailLinkRef?.current?.value);
-      // console.log(postThumbnailRef?.current?.files);
+      console.log(postTitleRef?.current?.value);
+      console.log(postThumnailLinkRef?.current?.value);
+      console.log(postThumbnailRef?.current?.files);
 
       const savedTitle = postTitleRef?.current?.value as string;
       const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
