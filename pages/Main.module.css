@@ -72,10 +72,11 @@
 }
 
 .mainContentBox {
-  width: 405px;
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 5px;
+  width: 405px;
+  height: 200px;
 }
 
 .mainContentTitle {
