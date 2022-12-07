@@ -104,7 +104,7 @@ export default function Post() {
           </div>
           <Editor />
           <button id={PostStyles.postUploadBtn} onClick={postUploadButtonClick}>
-            개인 정보 수정
+            게시글 작성
           </button>
         </form>
       </section>
