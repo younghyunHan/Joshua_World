@@ -22,6 +22,7 @@
 
 #mainTitle {
   padding-left: 15px;
+  margin: 0px;
   font-weight: bold;
   font-size: 25px;
 }
@@ -77,6 +78,7 @@
 }
 
 .mainContentTitle {
+  margin: 0px;
   font-size: 16px;
   font-weight: bold;
 }
@@ -127,6 +129,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 200px;
   cursor: pointer;
 }
 
@@ -152,6 +155,7 @@
 }
 
 .asidePostBoxTitle {
+  margin: 0px;
   font-weight: bold;
   font-size: 13px;
   line-height: 20px;
