@@ -1,4 +1,6 @@
 import React, { useRef, useCallback } from "react";
+import { useRecoilValue } from "recoil";
+import { postMainTextState } from "../../states";
 import axios from "axios";
 import dynamic from "next/dynamic";
 
@@ -23,6 +25,7 @@ export default function Post() {
   const postTitleRef = useRef<HTMLInputElement>(null);
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
+  const postMainText = useRecoilValue(postMainTextState);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -36,10 +39,12 @@ export default function Post() {
       const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
 
       const formData = new FormData();
+      console.log(postMainText);
 
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
       formData.append("postThumnailImg", savedThumbnailImgs[0]);
+      formData.append("postMaintext", postMainText);
 
       // axios
       //   .post("http://localhost:3000/userInfoUpdate", formData, {
@@ -56,7 +61,7 @@ export default function Post() {
 
       // customAxios.post("/userInfoUpdate", formData); // customAxios
     },
-    [postTitleRef, postThumnailLinkRef, postThumbnailRef]
+    [postTitleRef, postThumnailLinkRef, postThumbnailRef, postMainText]
   );
 
   return (
