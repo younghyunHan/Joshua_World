@@ -1,4 +1,6 @@
 import React, { useRef, useCallback } from "react";
+import { useRecoilState } from "recoil";
+import { postTitleState } from "../../states";
 import axios from "axios";
 import dynamic from "next/dynamic";
 
@@ -20,16 +22,13 @@ export default function Post() {
     }
   );
 
+  const [postTitle, setPostTitle] = useRecoilState(postTitleState);
+
   const postTitleRef = useRef<HTMLInputElement>(null);
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
 
-  const savedTitle = postTitleRef?.current?.value;
-
-  // console.log(savedTitle);
-  // console.log(postTitleRef?.current?.value);
-  // console.log(postThumnailLinkRef?.current?.value);
-  // console.log(postThumbnailRef?.current?.files);
+  setPostTitle(postTitleRef?.current?.value);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
