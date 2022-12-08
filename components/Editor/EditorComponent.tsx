@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { postMainTextState } from "../../states";
 import { Editor } from "@toast-ui/react-editor";
 
@@ -28,7 +28,7 @@ const EditorComponent = () => {
   const contentHTML = editorInstance?.getHTML();
   const contentMark = editorInstance?.getMarkdown();
 
-  const [postMainText, setPostMainText] = useRecoilState(postMainTextState);
+  const setPostMainText = useSetRecoilState(postMainTextState);
 
   console.log(contentHTML);
 
