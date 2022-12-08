@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const postTitleState = atom({
-  key: "postTitleState",
+export const postMainTextState = atom({
+  key: "postMainTextState",
   default: "",
 });

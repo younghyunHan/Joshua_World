@@ -1,9 +1,6 @@
-import {
-  ReactComponentElement,
-  ReactElement,
-  ReactInstance,
-  useRef,
-} from "react";
+import { useRef } from "react";
+import { useRecoilState } from "recoil";
+import { postMainTextState } from "../../states";
 import { Editor } from "@toast-ui/react-editor";
 
 // TOAST UI Editor CSS
@@ -30,8 +27,12 @@ const EditorComponent = () => {
   const editorInstance = editorRef?.current?.getInstance();
   const contentHTML = editorInstance?.getHTML();
   const contentMark = editorInstance?.getMarkdown();
+
+  const [postMainText, setPostMainText] = useRecoilState(postMainTextState);
+
   console.log(contentHTML);
-  console.log(contentMark);
+
+  setPostMainText(contentHTML);
 
   return (
     <Editor

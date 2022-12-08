@@ -1,6 +1,4 @@
 import React, { useRef, useCallback } from "react";
-import { useRecoilState } from "recoil";
-import { postTitleState } from "../../states";
 import axios from "axios";
 import dynamic from "next/dynamic";
 
@@ -22,13 +20,9 @@ export default function Post() {
     }
   );
 
-  const [postTitle, setPostTitle] = useRecoilState(postTitleState);
-
   const postTitleRef = useRef<HTMLInputElement>(null);
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
-
-  setPostTitle(postTitleRef?.current?.value);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -37,19 +31,15 @@ export default function Post() {
         return;
       }
 
-      console.log(postTitleRef?.current?.value);
-      console.log(postThumnailLinkRef?.current?.value);
-      console.log(postThumbnailRef?.current?.files);
-
-      const savedTitle = postTitleRef?.current?.value as string;
+      const savedPostTitle = postTitleRef?.current?.value as string;
       const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
-      const savedImgs = postThumbnailRef.current.files as FileList;
+      const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
 
       const formData = new FormData();
 
-      formData.append("postThumnailImg", savedImgs[0]);
-      formData.append("postTitle", savedTitle);
+      formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
+      formData.append("postThumnailImg", savedThumbnailImgs[0]);
 
       // axios
       //   .post("http://localhost:3000/userInfoUpdate", formData, {
