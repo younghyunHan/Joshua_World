@@ -39,6 +39,10 @@ export default function Post() {
       const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
 
       const formData = new FormData();
+
+      console.log(savedPostTitle);
+      console.log(savedThumbnailImgs[0]);
+      console.log(savedThumbnailLink);
       console.log(postMainText);
 
       formData.append("postTitle", savedPostTitle);

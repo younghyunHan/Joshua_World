@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 import { postMainTextState } from "../../states";
 import { Editor } from "@toast-ui/react-editor";
@@ -23,31 +23,33 @@ import tableMergedCell from "@toast-ui/editor-plugin-table-merged-cell";
 
 const EditorComponent = () => {
   const editorRef = useRef<any>(null);
-
-  const editorInstance = editorRef?.current?.getInstance();
-  const contentHTML = editorInstance?.getHTML();
-  const contentMark = editorInstance?.getMarkdown();
-
   const setPostMainText = useSetRecoilState(postMainTextState);
 
-  console.log(contentHTML);
+  const editorInstance = editorRef?.current?.getInstance();
+  const contentHtml = editorInstance?.getHTML();
 
-  setPostMainText(contentHTML);
+  const seeHtml = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    console.log(contentHtml);
+    setPostMainText(contentHtml);
+  };
 
   return (
-    <Editor
-      ref={editorRef}
-      initialValue="hello react editor world!"
-      previewStyle="vertical"
-      height="500px"
-      usageStatistics={false}
-      plugins={[
-        colorSyntax,
-        tableMergedCell,
-        [codeSyntaxHighlight, { highlighter: Prism }],
-      ]}
-      // language="ko-KR"
-    />
+    <>
+      <Editor
+        ref={editorRef}
+        initialValue="hello react editor world!"
+        previewStyle="vertical"
+        height="500px"
+        usageStatistics={false}
+        plugins={[
+          colorSyntax,
+          tableMergedCell,
+          [codeSyntaxHighlight, { highlighter: Prism }],
+        ]}
+      />
+      <button onClick={seeHtml}>html 내용보기</button>
+    </>
   );
 };
 
