@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 import { postMainTextState } from "../../states";
 import { Editor } from "@toast-ui/react-editor";
@@ -31,7 +31,7 @@ const EditorComponent = () => {
   const seeHtml = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     console.log(contentHtml);
-    setPostMainText(contentHtml);
+    // setPostMainText(contentHtml);
   };
 
   return (
@@ -48,7 +48,7 @@ const EditorComponent = () => {
           [codeSyntaxHighlight, { highlighter: Prism }],
         ]}
       />
-      <button onClick={seeHtml}>html 내용보기</button>
+      <button onClick={seeHtml}>html 내용 담기</button>
     </>
   );
 };
