@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { postMainTextState } from "../../states";
 import axios from "axios";
@@ -14,6 +14,7 @@ import PostStyles from "./post.module.css";
 
 export default function Post() {
   // const access_token = localStorage.getItem('token');
+  const [postMainText, setPostMainText] = useState("");
 
   const Editor = dynamic(
     () => import("../../components/Editor/EditorComponent"),
@@ -25,7 +26,7 @@ export default function Post() {
   const postTitleRef = useRef<HTMLInputElement>(null);
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
-  const postMainText = useRecoilValue(postMainTextState);
+  // const postMainText = useRecoilValue(postMainTextState);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
