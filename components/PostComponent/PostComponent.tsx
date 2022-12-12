@@ -30,6 +30,8 @@ const PostComponent = () => {
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
 
+  const [updated, setUpdated] = useState(editorRef?.current);
+
   const editorInstance = editorRef?.current?.getInstance();
   const postMainHtml = editorInstance?.getHTML();
 
@@ -45,18 +47,20 @@ const PostComponent = () => {
       const savedPostTitle = postTitleRef?.current?.value as string;
       const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
       const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
+      setUpdated(postMainHtml);
 
       const formData = new FormData();
 
-      // console.log(savedPostTitle);
-      // console.log(savedThumbnailImgs[0]);
-      // console.log(savedThumbnailLink);
-      // console.log(postMainText);
+      console.log(savedPostTitle);
+      console.log(savedThumbnailImgs[0]);
+      console.log(savedThumbnailLink);
+      // console.log(postMainHtml);
+      console.log(updated);
 
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
       formData.append("postThumnailImg", savedThumbnailImgs[0]);
-      formData.append("postMaintext", postMainHtml);
+      formData.append("postMainHtml", postMainHtml);
 
       // axios
       //   .post("http://localhost:3000/userInfoUpdate", formData, {
@@ -73,7 +77,7 @@ const PostComponent = () => {
 
       // customAxios.post("/userInfoUpdate", formData); // customAxios
     },
-    [postTitleRef, postThumnailLinkRef, postThumbnailRef, postMainHtml]
+    [postTitleRef, postThumnailLinkRef, postThumbnailRef, postMainHtml, updated]
   );
 
   return (
