@@ -30,55 +30,56 @@ const PostComponent = () => {
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
 
-  const [updated, setUpdated] = useState(editorRef?.current);
-
   const editorInstance = editorRef?.current?.getInstance();
   const postMainHtml = editorInstance?.getHTML();
 
   const access_token = localStorage.getItem("token");
 
-  const postUploadButtonClick = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      event.preventDefault();
-      if (!postThumbnailRef.current) {
-        return;
-      }
+  // const postUploadButtonClick = useCallback(
+  //   (event: React.MouseEvent<HTMLElement>) => {
+  //     event.preventDefault();
+  //     if (!postThumbnailRef.current) {
+  //       return;
+  //     }
 
-      const savedPostTitle = postTitleRef?.current?.value as string;
-      const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
-      const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
-      setUpdated(postMainHtml);
+  //     const savedPostTitle = postTitleRef?.current?.value as string;
+  //     const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
+  //     const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
 
-      const formData = new FormData();
+  //     const formData = new FormData();
 
-      console.log(savedPostTitle);
-      console.log(savedThumbnailImgs[0]);
-      console.log(savedThumbnailLink);
-      // console.log(postMainHtml);
-      console.log(updated);
+  //     console.log(savedPostTitle);
+  //     console.log(savedThumbnailImgs[0]);
+  //     console.log(savedThumbnailLink);
+  //     console.log(postMainHtml);
 
-      formData.append("postTitle", savedPostTitle);
-      formData.append("postThumbnailLink", savedThumbnailLink);
-      formData.append("postThumnailImg", savedThumbnailImgs[0]);
-      formData.append("postMainHtml", postMainHtml);
+  //     formData.append("postTitle", savedPostTitle);
+  //     formData.append("postThumbnailLink", savedThumbnailLink);
+  //     formData.append("postThumnailImg", savedThumbnailImgs[0]);
+  //     formData.append("postMainHtml", postMainHtml);
 
-      // axios
-      //   .post("http://localhost:3000/userInfoUpdate", formData, {
-      //     headers: {
-      //       // Authorization: `${access_token}`,
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   })
-      //   .then(function (response) {
-      //     if (response.data.message === "SUCCESS") {
-      //       alert("게시글 저장되었습니다.");
-      //     }
-      //   });
+  //     // axios
+  //     //   .post("http://localhost:3000/userInfoUpdate", formData, {
+  //     //     headers: {
+  //     //       // Authorization: `${access_token}`,
+  //     //       "Content-Type": "multipart/form-data",
+  //     //     },
+  //     //   })
+  //     //   .then(function (response) {
+  //     //     if (response.data.message === "SUCCESS") {
+  //     //       alert("게시글 저장되었습니다.");
+  //     //     }
+  //     //   });
 
-      // customAxios.post("/userInfoUpdate", formData); // customAxios
-    },
-    [postTitleRef, postThumnailLinkRef, postThumbnailRef, postMainHtml, updated]
-  );
+  //     // customAxios.post("/userInfoUpdate", formData); // customAxios
+  //   },
+  //   [postTitleRef, postThumnailLinkRef, postThumbnailRef, postMainHtml]
+  // );
+
+  const postUploadButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    console.log(postMainHtml);
+  };
 
   return (
     <section id={PostComponentStyles.post}>
@@ -121,12 +122,13 @@ const PostComponent = () => {
             [codeSyntaxHighlight, { highlighter: Prism }],
           ]}
         />
-        <button
+        {/* <button
           id={PostComponentStyles.postUploadBtn}
           onClick={postUploadButtonClick}
         >
           게시글 작성
-        </button>
+        </button> */}
+        <button onClick={postUploadButtonClick}>게시글 작성</button>
       </form>
     </section>
   );
