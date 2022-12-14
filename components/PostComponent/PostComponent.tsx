@@ -32,8 +32,6 @@ const PostComponent = () => {
 
   const editorInstance = editorRef?.current?.getInstance();
 
-  const access_token = localStorage.getItem("token");
-
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       event.preventDefault();
@@ -44,9 +42,6 @@ const PostComponent = () => {
       const savedPostTitle = postTitleRef?.current?.value as string;
       const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
       const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
-
-      const formData = new FormData();
-
       const postMainHtml = editorInstance?.getHTML();
 
       console.log(savedPostTitle);
@@ -54,25 +49,19 @@ const PostComponent = () => {
       console.log(savedThumbnailLink);
       console.log(postMainHtml);
 
+      const formData = new FormData();
+
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
       formData.append("postThumnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
-      // axios
-      //   .post("http://localhost:3000/userInfoUpdate", formData, {
-      //     headers: {
-      //       // Authorization: `${access_token}`,
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   })
-      //   .then(function (response) {
-      //     if (response.data.message === "SUCCESS") {
-      //       alert("게시글 저장되었습니다.");
-      //     }
-      //   });
-
-      // customAxios.post("/userInfoUpdate", formData); // customAxios
+      // customAxios
+      customAxios.post("/userInfoUpdate", formData).then(function (response) {
+        if (response.data.message === "SUCCESS") {
+          alert("게시글 저장되었습니다.");
+        }
+      });
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
