@@ -32,8 +32,6 @@ const PostComponent = () => {
 
   const editorInstance = editorRef?.current?.getInstance();
 
-  const countRef = useRef(0);
-
   const access_token = localStorage.getItem("token");
 
   const postUploadButtonClick = useCallback(
