@@ -34,14 +34,6 @@ const PostComponent = () => {
 
   const countRef = useRef(0);
 
-  const checkuseRef = (event: { preventDefault: any }) => {
-    event?.preventDefault();
-    countRef.current = countRef.current + 1;
-    // console.log(`ref 증가 --> ${countRef.current}`);
-    // console.log(countRef);
-    // console.log(editorInstance);
-  };
-
   const access_token = localStorage.getItem("token");
 
   const postUploadButtonClick = useCallback(
@@ -59,11 +51,10 @@ const PostComponent = () => {
 
       const postMainHtml = editorInstance?.getHTML();
 
-      // console.log(savedPostTitle);
-      // console.log(savedThumbnailImgs[0]);
-      // console.log(savedThumbnailLink);
+      console.log(savedPostTitle);
+      console.log(savedThumbnailImgs[0]);
+      console.log(savedThumbnailLink);
       console.log(postMainHtml);
-      // console.log(`ref 증가 --> ${countRef.current}`);
 
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
