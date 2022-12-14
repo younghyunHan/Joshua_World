@@ -30,8 +30,6 @@ const PostComponent = () => {
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
 
-  const editorInstance = editorRef?.current?.getInstance();
-
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       event.preventDefault();
@@ -42,12 +40,13 @@ const PostComponent = () => {
       const savedPostTitle = postTitleRef?.current?.value as string;
       const savedThumbnailLink = postThumnailLinkRef?.current?.value as string;
       const savedThumbnailImgs = postThumbnailRef.current.files as FileList;
+      const editorInstance = editorRef?.current?.getInstance();
       const postMainHtml = editorInstance?.getHTML();
 
-      console.log(savedPostTitle);
-      console.log(savedThumbnailImgs[0]);
-      console.log(savedThumbnailLink);
-      console.log(postMainHtml);
+      // console.log(savedPostTitle);
+      // console.log(savedThumbnailImgs[0]);
+      // console.log(savedThumbnailLink);
+      // console.log(postMainHtml);
 
       const formData = new FormData();
 
@@ -56,12 +55,17 @@ const PostComponent = () => {
       formData.append("postThumnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
+      console.log(formData.get("postTitle"));
+      console.log(formData.get("postThumbnailLink"));
+      console.log(formData.get("postThumnailImg"));
+      console.log(formData.get("postMainHtml"));
+
       // customAxios
-      customAxios.post("/userInfoUpdate", formData).then(function (response) {
-        if (response.data.message === "SUCCESS") {
-          alert("게시글 저장되었습니다.");
-        }
-      });
+      // customAxios.post("/postUpdate", formData).then(function (response) {
+      //   if (response.data.message === "SUCCESS") {
+      //     alert("게시글 저장되었습니다.");
+      //   }
+      // });
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
