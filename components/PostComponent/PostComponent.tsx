@@ -30,8 +30,7 @@ const PostComponent = () => {
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
 
-  // const editorInstance = editorRef?.current?.getInstance();
-  // const postMainHtml = editorInstance?.getHTML();
+  const editorInstance = editorRef?.current?.getInstance();
 
   const countRef = useRef(0);
 
@@ -58,14 +57,13 @@ const PostComponent = () => {
 
       const formData = new FormData();
 
-      const editorInstance = editorRef?.current?.getInstance();
       const postMainHtml = editorInstance?.getHTML();
 
-      console.log(savedPostTitle);
+      // console.log(savedPostTitle);
       // console.log(savedThumbnailImgs[0]);
       // console.log(savedThumbnailLink);
       console.log(postMainHtml);
-      console.log(`ref 증가 --> ${countRef.current}`);
+      // console.log(`ref 증가 --> ${countRef.current}`);
 
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
