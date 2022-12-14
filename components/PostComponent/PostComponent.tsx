@@ -126,7 +126,6 @@ const PostComponent = () => {
         >
           게시글 작성
         </button>
-        <button onClick={checkuseRef}>useRef값 확인</button>
       </form>
     </section>
   );
