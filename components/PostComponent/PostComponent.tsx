@@ -43,10 +43,10 @@ const PostComponent = () => {
       const editorInstance = editorRef?.current?.getInstance();
       const postMainHtml = editorInstance?.getHTML();
 
-      // console.log(savedPostTitle);
-      // console.log(savedThumbnailImgs[0]);
-      // console.log(savedThumbnailLink);
-      // console.log(postMainHtml);
+      console.log(savedPostTitle);
+      console.log(savedThumbnailImgs[0]);
+      console.log(savedThumbnailLink);
+      console.log(postMainHtml);
 
       const formData = new FormData();
 
