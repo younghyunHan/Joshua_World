@@ -55,10 +55,10 @@ const PostComponent = () => {
       formData.append("postThumnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
-      // console.log(formData.get("postTitle"));
-      // console.log(formData.get("postThumbnailLink"));
-      // console.log(formData.get("postThumnailImg"));
-      // console.log(formData.get("postMainHtml"));
+      console.log(formData.get("postTitle"));
+      console.log(formData.get("postThumbnailLink"));
+      console.log(formData.get("postThumnailImg"));
+      console.log(formData.get("postMainHtml"));
 
       customAxios;
       customAxios.post("/postUpdate", formData).then(function (response) {
