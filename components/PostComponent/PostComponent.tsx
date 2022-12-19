@@ -44,41 +44,28 @@ const PostComponent = () => {
       const editorInstance = editorRef?.current?.getInstance();
       const postMainHtml = editorInstance?.getHTML();
 
-      console.log(savedPostTitle);
-      console.log(savedThumbnailImgs[0]);
-      console.log(savedThumbnailLink);
-      console.log(postMainHtml);
+      // console.log(savedPostTitle);
+      // console.log(savedThumbnailImgs[0]);
+      // console.log(savedThumbnailLink);
+      // console.log(postMainHtml);
 
       const formData = new FormData();
 
       formData.append("postTitle", savedPostTitle);
       formData.append("postThumbnailLink", savedThumbnailLink);
-      formData.append("postThumnailImg", savedThumbnailImgs[0]);
+      formData.append("postThumbnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
       console.log(formData.get("postTitle"));
       console.log(formData.get("postThumbnailLink"));
-      console.log(formData.get("postThumnailImg"));
+      console.log(formData.get("postThumbnailImg"));
       console.log(formData.get("postMainHtml"));
 
-      // customAxios.post("/post", formData).then(function (response) {
-      //   if (response.data.message === "SUCCESS") {
-      //     alert("게시글 저장되었습니다.");
-      //   }
-      // });
-
-      axios
-        .post("http://localhost:3000/post", formData, {
-          headers: {
-            Authorization: `${access_token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then(function (response) {
-          if (response.data.message === "SUCCESS") {
-            alert("게시글 저장되었습니다.");
-          }
-        });
+      customAxios.post("/post", formData).then(function (response) {
+        if (response.data.message === "SUCCESS") {
+          alert("게시글 저장되었습니다.");
+        }
+      });
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
