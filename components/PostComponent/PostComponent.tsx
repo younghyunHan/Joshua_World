@@ -61,7 +61,7 @@ const PostComponent = () => {
       console.log(formData.get("postMainHtml"));
 
       customAxios;
-      customAxios.post("/postUpdate", formData).then(function (response) {
+      customAxios.post("/post", formData).then(function (response) {
         if (response.data.message === "SUCCESS") {
           alert("게시글 저장되었습니다.");
         }
