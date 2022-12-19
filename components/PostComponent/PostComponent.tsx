@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useSetRecoilState } from "recoil";
 import { Editor } from "@toast-ui/react-editor";
 
 import axios from "axios";
 import { customAxios } from "../../lib/CustomAxios";
+
+import postData from "../../state/atom";
 
 import PostComponentStyles from "./PostComponent.module.css";
 
@@ -29,7 +32,7 @@ const PostComponent = () => {
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
-  const access_token = localStorage.getItem("token");
+  const setPostData = useSetRecoilState(postData);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -56,14 +59,16 @@ const PostComponent = () => {
       formData.append("postThumbnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
-      console.log(formData.get("postTitle"));
-      console.log(formData.get("postThumbnailLink"));
-      console.log(formData.get("postThumbnailImg"));
-      console.log(formData.get("postMainHtml"));
+      // console.log(formData.get("postTitle"));
+      // console.log(formData.get("postThumbnailLink"));
+      // console.log(formData.get("postThumbnailImg"));
+      // console.log(formData.get("postMainHtml"));
 
       customAxios.post("/post", formData).then(function (response) {
         if (response.data.message === "SUCCESS") {
           alert("게시글 저장되었습니다.");
+          console.log(response.data);
+          setPostData(response.data);
         }
       });
     },

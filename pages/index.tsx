@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
 // import axios from 'axios';
 // import Link from 'next/link';
 
@@ -8,6 +9,7 @@ import HeaderTitle from "../components/HeaderTitle/HeaderTitle";
 // import Modal from './Modal/Modal';
 // import TopListData from './TopListData/TopListData';
 // import MainContent from './MainContent/MainContent';
+import postData from "../state/atom";
 
 import MainStyles from "./Main.module.css";
 
@@ -20,6 +22,8 @@ function Main() {
   // const [selectCategoryData, setSelectCategoryData] = useState('');
   // const [searchData, setSearchData] = useState('');
   // const [modalOpen, setModalOpen] = useState(false);
+  const postContent = useRecoilValue(postData);
+  console.log(postContent);
 
   // const access_token = localStorage.getItem('token');
 
