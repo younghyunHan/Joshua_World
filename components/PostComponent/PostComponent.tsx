@@ -29,6 +29,7 @@ const PostComponent = () => {
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
+  const access_token = localStorage.getItem("token");
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -60,12 +61,24 @@ const PostComponent = () => {
       console.log(formData.get("postThumnailImg"));
       console.log(formData.get("postMainHtml"));
 
-      customAxios;
-      customAxios.post("/post", formData).then(function (response) {
-        if (response.data.message === "SUCCESS") {
-          alert("게시글 저장되었습니다.");
-        }
-      });
+      // customAxios.post("/post", formData).then(function (response) {
+      //   if (response.data.message === "SUCCESS") {
+      //     alert("게시글 저장되었습니다.");
+      //   }
+      // });
+
+      axios
+        .post("http://localhost:3000/post", formData, {
+          headers: {
+            Authorization: `${access_token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(function (response) {
+          if (response.data.message === "SUCCESS") {
+            alert("게시글 저장되었습니다.");
+          }
+        });
     },
     [postTitleRef, postThumnailLinkRef, postThumbnailRef]
   );
