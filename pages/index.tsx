@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+// import { useRecoilValue } from "recoil";
 // import axios from 'axios';
 // import Link from 'next/link';
 
@@ -9,7 +9,7 @@ import HeaderTitle from "../components/HeaderTitle/HeaderTitle";
 // import Modal from './Modal/Modal';
 // import TopListData from './TopListData/TopListData';
 // import MainContent from './MainContent/MainContent';
-import postData from "../state/atom";
+// import postData from "../state/atom";
 
 import MainStyles from "./Main.module.css";
 
@@ -22,8 +22,8 @@ function Main() {
   // const [selectCategoryData, setSelectCategoryData] = useState('');
   // const [searchData, setSearchData] = useState('');
   // const [modalOpen, setModalOpen] = useState(false);
-  const postContent = useRecoilValue(postData);
-  console.log(postContent);
+  // const postContent = useRecoilValue(postData);
+  // console.log(postContent);
 
   // const access_token = localStorage.getItem('token');
 
@@ -161,22 +161,24 @@ function Main() {
             {/* map */}
             <img
               className={MainStyles.mainPostsImg}
-              src="https://dersyb7nfifdf.cloudfront.net/blog/2021/08/frontend-backend-Copy.png"
+              // src="https://dersyb7nfifdf.cloudfront.net/blog/2021/08/frontend-backend-Copy.png"
+              src={postContent?.postThumbnailLink}
             />
             <div className={MainStyles.mainContentBox}>
               <h3 className={MainStyles.mainContentTitle}>
-                맨 땅에 헤딩하면서 배운 프론트엔드, 백엔드 성능 최적화
+                {postContent?.postTitle}
               </h3>
               <div className={MainStyles.mainContentHashTag}>
                 #성능 최적화 &nbsp;&nbsp;#리팩토링 &nbsp;&nbsp;#dry &nbsp;&nbsp;
                 #kiss
               </div>
               <div className={MainStyles.mainContent}>
-                구현이 전부가 아니다. 썸네일 출처 :
+                {/* 구현이 전부가 아니다. 썸네일 출처 :
                 https://www.ironhack.com/en/web-development/front-end-vs-back-end-what-s-the-difference
                 프로젝트. 자바스크립트는 어떻게 돌아갈까? 브라우저 자바스크립트
                 엔진까지 알아보았습니다. 그렇다면 프론트엔드에서 자바스크립트는
-                어떻게...
+                어떻게... */}
+                {postContent?.postMainHtml}
               </div>
               <div className={MainStyles.mainContentBottom}>
                 <span className={MainStyles.mainContentTime}>9 days ago</span>

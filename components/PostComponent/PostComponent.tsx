@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useSetRecoilState } from "recoil";
+// import { useSetRecoilState } from "recoil";
 import { Editor } from "@toast-ui/react-editor";
 
 import axios from "axios";
 import { customAxios } from "../../lib/CustomAxios";
 
-import postData from "../../state/atom";
+// import postData from "../../state/atom";
 
 import PostComponentStyles from "./PostComponent.module.css";
 
@@ -32,7 +32,7 @@ const PostComponent = () => {
   const postThumnailLinkRef = useRef<HTMLInputElement>(null);
   const postThumbnailRef = useRef<HTMLInputElement>(null);
   const editorRef = useRef<any>(null);
-  const setPostData = useSetRecoilState(postData);
+  // const setPostData = useSetRecoilState(postData);
 
   const postUploadButtonClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -68,7 +68,7 @@ const PostComponent = () => {
         if (response.data.message === "SUCCESS") {
           alert("게시글 저장되었습니다.");
           console.log(response.data);
-          setPostData(response.data);
+          // setPostData(response.data);
         }
       });
     },
