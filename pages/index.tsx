@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // import { useRecoilValue } from "recoil";
 // import axios from 'axios';
 // import Link from 'next/link';
+import { getMainData } from "../lib/CustomAxios";
 
 import Nav from "../components/Nav/Nav";
 import HeaderTitle from "../components/HeaderTitle/HeaderTitle";
@@ -25,8 +26,6 @@ function Main() {
   // const postContent = useRecoilValue(postData);
   // console.log(postContent);
 
-  // const access_token = localStorage.getItem('token');
-
   // interface userInfoDataType {
   //   user_name: string;
   //   user_img: string;
@@ -36,6 +35,15 @@ function Main() {
   // const [userInfoData, setUserInfoData] = useState<null | userInfoDataType>(
   //   null,
   // );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const access_token = localStorage.getItem("token");
+      getMainData.get("/").then(function (response) {
+        console.log(response.data);
+      });
+    }
+  }, []);
 
   // useEffect(() => {
   //   if (typeof window !== 'undefined') {
@@ -162,12 +170,9 @@ function Main() {
             <img
               className={MainStyles.mainPostsImg}
               // src="https://dersyb7nfifdf.cloudfront.net/blog/2021/08/frontend-backend-Copy.png"
-              src={postContent?.postThumbnailLink}
             />
             <div className={MainStyles.mainContentBox}>
-              <h3 className={MainStyles.mainContentTitle}>
-                {postContent?.postTitle}
-              </h3>
+              <h3 className={MainStyles.mainContentTitle}></h3>
               <div className={MainStyles.mainContentHashTag}>
                 #성능 최적화 &nbsp;&nbsp;#리팩토링 &nbsp;&nbsp;#dry &nbsp;&nbsp;
                 #kiss
@@ -178,7 +183,6 @@ function Main() {
                 프로젝트. 자바스크립트는 어떻게 돌아갈까? 브라우저 자바스크립트
                 엔진까지 알아보았습니다. 그렇다면 프론트엔드에서 자바스크립트는
                 어떻게... */}
-                {postContent?.postMainHtml}
               </div>
               <div className={MainStyles.mainContentBottom}>
                 <span className={MainStyles.mainContentTime}>9 days ago</span>

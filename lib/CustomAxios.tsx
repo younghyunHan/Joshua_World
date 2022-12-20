@@ -11,6 +11,13 @@ export const customAxios: AxiosInstance = axios.create({
   },
 });
 
+export const getMainData: AxiosInstance = axios.create({
+  baseURL: "http://localhost:3000",
+  headers: {
+    Authorization: `${access_token}`,
+  },
+});
+
 /*
     1. 요청 인터셉터
     2개의 콜백 함수를 받습니다.
