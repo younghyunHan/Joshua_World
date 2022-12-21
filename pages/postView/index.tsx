@@ -1,16 +1,25 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { countLike } from "../../lib/CustomAxios";
 
-export default function Detail() {
+import PostViewStyles from "./postView.module.css";
+
+export default function PostView() {
   const [like, setLike] = useState(0);
 
-  <>
-    <div>상세페이지</div>
-    <span
-      onClick={() => {
-        setLike(like + 1);
-      }}
-    >
-      Likes{like}
-    </span>
-  </>;
+  const countLike = () => {
+    setLike(like + 1);
+  };
+
+  useEffect(() => {
+    axios.get;
+  }, []);
+
+  return (
+    <>
+      <div id={PostViewStyles.postViewTitle}>상세페이지</div>
+      <span onClick={countLike}>Likes{like}</span>
+      {/* savedLike -> countLike -> post API -> saveLike */}
+    </>
+  );
 }
