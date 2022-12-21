@@ -25,6 +25,7 @@ function Main() {
   type mainDataType = [
     postTitle: string,
     postThumbnailLink: string,
+    postThumbnailImg: File,
     postMainHtml: string
   ];
 
@@ -179,6 +180,7 @@ function Main() {
               src={mainData?.postThumbnailLink}
               alt="mainDataImg"
             />
+
             <div className={MainStyles.mainContentBox}>
               <h3 className={MainStyles.mainContentTitle}>
                 {mainData?.postTitle}
