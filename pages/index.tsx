@@ -1,7 +1,5 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-// import { useRecoilValue } from "recoil";
-// import axios from 'axios';
 // import Link from 'next/link';
 import { getMainData } from "../lib/CustomAxios";
 
@@ -10,7 +8,6 @@ import HeaderTitle from "../components/HeaderTitle/HeaderTitle";
 // import Modal from './Modal/Modal';
 // import TopListData from './TopListData/TopListData';
 // import MainContent from './MainContent/MainContent';
-// import postData from "../state/atom";
 
 import MainStyles from "./Main.module.css";
 
@@ -19,12 +16,24 @@ function Main() {
   // const [navList, setNavList] = useState([]);
   // const [userName, setUserName] = useState('');
 
+  // type setMainDataType = {
+  //   postTitle: string;
+  //   postThumbnailLink: string;
+  //   postMainHtml: string;
+  // };
+
+  type mainDataType = [
+    postTitle: string,
+    postThumbnailLink: string,
+    postMainHtml: string
+  ];
+
+  const [mainData, setMainData] = useState<mainDataType[] | []>([]);
+
   // const [listData, setListData] = useState([]);
   // const [selectCategoryData, setSelectCategoryData] = useState('');
   // const [searchData, setSearchData] = useState('');
   // const [modalOpen, setModalOpen] = useState(false);
-  // const postContent = useRecoilValue(postData);
-  // console.log(postContent);
 
   // interface userInfoDataType {
   //   user_name: string;
@@ -37,12 +46,9 @@ function Main() {
   // );
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const access_token = localStorage.getItem("token");
-      getMainData.get("/").then(function (response) {
-        console.log(response.data);
-      });
-    }
+    getMainData.get("/").then(function (response) {
+      setMainData(response.data);
+    });
   }, []);
 
   // useEffect(() => {
@@ -170,9 +176,13 @@ function Main() {
             <img
               className={MainStyles.mainPostsImg}
               // src="https://dersyb7nfifdf.cloudfront.net/blog/2021/08/frontend-backend-Copy.png"
+              src={mainData?.postThumbnailLink}
+              alt="mainDataImg"
             />
             <div className={MainStyles.mainContentBox}>
-              <h3 className={MainStyles.mainContentTitle}></h3>
+              <h3 className={MainStyles.mainContentTitle}>
+                {mainData?.postTitle}
+              </h3>
               <div className={MainStyles.mainContentHashTag}>
                 #성능 최적화 &nbsp;&nbsp;#리팩토링 &nbsp;&nbsp;#dry &nbsp;&nbsp;
                 #kiss
@@ -183,6 +193,7 @@ function Main() {
                 프로젝트. 자바스크립트는 어떻게 돌아갈까? 브라우저 자바스크립트
                 엔진까지 알아보았습니다. 그렇다면 프론트엔드에서 자바스크립트는
                 어떻게... */}
+                {mainData?.postMainHtml}
               </div>
               <div className={MainStyles.mainContentBottom}>
                 <span className={MainStyles.mainContentTime}>9 days ago</span>
@@ -197,7 +208,11 @@ function Main() {
         <aside id={MainStyles.mainAside}>
           <article className={MainStyles.asidePostBox}>
             <div className={MainStyles.asidePostBoxTop}>
-              <img id={MainStyles.likeImg} src="/images/likes.png" />
+              <img
+                id={MainStyles.likeImg}
+                src="/images/likes.png"
+                alt="like Img"
+              />
               <h4>IN TECH 0 Likes</h4>
             </div>
             <h5 className={MainStyles.asidePostBoxTitle}>
@@ -213,7 +228,11 @@ function Main() {
           </article>
           <article className={MainStyles.asidePostBox}>
             <div className={MainStyles.asidePostBoxTop}>
-              <img id={MainStyles.viewsImg} src="/images/views.png" />
+              <img
+                id={MainStyles.viewsImg}
+                src="/images/views.png"
+                alt="viewsImg"
+              />
               <h4>IN TECH 18 Views</h4>
             </div>
             <h5 className={MainStyles.asidePostBoxTitle}>
@@ -229,7 +248,11 @@ function Main() {
           </article>
           <article className={MainStyles.asidePostBox}>
             <div className={MainStyles.asidePostBoxTop}>
-              <img id={MainStyles.commentImg} src="/images/comments.png" />
+              <img
+                id={MainStyles.commentImg}
+                src="/images/comments.png"
+                alt="commentImg"
+              />
               <h4>IN TECH 0 Comments</h4>
             </div>
             <h5 className={MainStyles.asidePostBoxTitle}>

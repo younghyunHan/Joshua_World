@@ -1,11 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-// import { useSetRecoilState } from "recoil";
 import { Editor } from "@toast-ui/react-editor";
-
-import axios from "axios";
 import { customAxios } from "../../lib/CustomAxios";
-
-// import postData from "../../state/atom";
 
 import PostComponentStyles from "./PostComponent.module.css";
 
@@ -59,10 +54,10 @@ const PostComponent = () => {
       formData.append("postThumbnailImg", savedThumbnailImgs[0]);
       formData.append("postMainHtml", postMainHtml);
 
-      console.log(formData.get("postTitle"));
-      console.log(formData.get("postThumbnailLink"));
-      console.log(formData.get("postThumbnailImg"));
-      console.log(formData.get("postMainHtml"));
+      // console.log(formData.get("postTitle"));
+      // console.log(formData.get("postThumbnailLink"));
+      // console.log(formData.get("postThumbnailImg"));
+      // console.log(formData.get("postMainHtml"));
 
       customAxios.post("/post", formData).then(function (response) {
         if (response.data.message === "SUCCESS") {
