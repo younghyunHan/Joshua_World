@@ -29,7 +29,14 @@ function Main() {
     postMainHtml: string
   ];
 
-  const [mainData, setMainData] = useState<mainDataType[] | []>([]);
+  const [mainData, setMainData] = useState<mainDataType[] | []>([
+    {
+      postTitle: "",
+      postThumbnailLink: "",
+      postThumbnailImg: null,
+      postMainHtml: "",
+    },
+  ]);
 
   // const [listData, setListData] = useState([]);
   // const [selectCategoryData, setSelectCategoryData] = useState('');

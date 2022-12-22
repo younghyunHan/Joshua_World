@@ -1,14 +1,15 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { countLike } from "../../lib/CustomAxios";
 
 import PostViewStyles from "./postView.module.css";
 
 export default function PostView() {
   const [like, setLike] = useState(0);
+  const countRef = useRef(0);
 
   const countLike = () => {
-    setLike(like + 1);
+    countRef.current = countRef.current + 1;
   };
 
   useEffect(() => {
