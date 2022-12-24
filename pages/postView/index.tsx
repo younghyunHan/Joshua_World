@@ -12,9 +12,9 @@ export default function PostView() {
     countRef.current = countRef.current + 1;
   };
 
-  useEffect(() => {
-    axios.get;
-  }, []);
+  // useEffect(() => {
+  //   axios.get;
+  // }, []);
 
   return (
     <>
